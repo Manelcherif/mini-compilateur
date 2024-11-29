@@ -11,10 +11,10 @@ REAL {chiffre}*"."{chiffre}*
 TEXT \"[^\"]*\"
 %%
 
-{IDF} {printf("idf"), return IDF;}
-{NUM} { printf("num") ,return NUM;}
-{REAL}{printf("real"), return REAL;}
-{TEXT}{printf("text"), return TEXT;}
+{IDF} {printf("idf"); return IDF;}
+{NUM} { printf("num") ;return NUM;}
+{REAL}{printf("real");return REAL;}
+{TEXT}{printf("text"); return TEXT;}
 
 /*mots cles*/
 "DEBUT" {return DEBUT;}
@@ -54,7 +54,7 @@ TEXT \"[^\"]*\"
 "{" {return BRAKL;}
 "}"{return BRAKR;}
 ":" {return DOUBLPTS;}
-";" {return PTSV;}
+";" {return PTV;}
 
 [ \t]+ {colonne +=yyleng;}
 \n {ligne++; colonne=1};
