@@ -9,6 +9,10 @@ IDF {lettre}({lettre}|{chiffre})*
 NUM {chiffre}*
 REAL {chiffre}*"."{chiffre}* 
 TEXT \"[^\"]*\"
+/*les commentaire*/
+commentaire1   "--"[^#]*"##" 
+commentaire2   "\{-"([^-]|"-"|[^-}])*"-}" 
+
 %%
 
 {IDF} {printf("idf"); return IDF;}
@@ -31,10 +35,6 @@ TEXT \"[^\"]*\"
 "TEXT" {return text;}
 "affiche" {return AFFICHE;}
 "lire" {return LIRE;}
- 
-/*les commentaire*/
-"--"[^#]*"##" {/* commentaire une suele ligne  */}
-"\{-"([^-]|"-"|[^-}])*"-}" { /*commentaires multi-lignes */ }
 
 /* operateurs*/
 "<-" {return AFF;}
@@ -55,6 +55,9 @@ TEXT \"[^\"]*\"
 "}"{return BRAKR;}
 ":" {return DOUBLPTS;}
 ";" {return PTV;}
+
+{Comment1} {printf("commentaire une suele ligne \n");}
+{Comment2} {printf("commentaires multi-lignes \n");nb_ligne++;}
 
 [ \t]+ {colonne +=yyleng;}
 \n {ligne++; colonne=1};

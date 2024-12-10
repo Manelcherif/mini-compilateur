@@ -82,4 +82,16 @@ S: DEBUT declaration EXECUTION bloc FIN{
                |condition OU condition
                |NON condition
                ;
+
 %%
+
+main ()
+{
+yyparse();
+}
+yywrap()
+{}
+int yyerror(char *msg)
+{printf(" Erreur syntaxique a la ligne %d, a la colonne %d\n",nb_ligne,col);
+    return 1;
+}
