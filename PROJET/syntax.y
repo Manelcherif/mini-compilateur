@@ -42,6 +42,9 @@ S: DEBUT declaration EXECUTION bloc FIN{
          |FIXE NUM DOUBLPTS IDF AFF NUM PTV{
               printf("Declaration variable constante \n");
          }
+         |FIXE REAL DOUBLPTS IDF AFF NUM PTV{
+              printf("Declaration variable constante \n");
+         }
         ;
     bloc:BRAKL instructions BRAKR;
          instructions:instruction
@@ -49,6 +52,7 @@ S: DEBUT declaration EXECUTION bloc FIN{
          instruction instructions
          ;
             instruction:IDF AFF expression PTV{
+               
                 printf("Affectation %s \n ",$1);
             }    
             | affiche BRAKL TEXT BRAKR PTV{
@@ -70,7 +74,9 @@ S: DEBUT declaration EXECUTION bloc FIN{
                |expression PLUS expression
                |expression MOINS expression
                |expression MULT expression
-               |expression DIV expression
+               |expression DIV expression{
+                if ()
+               }
                ;
                condition:expression EGAL expression
                |expression DIFF expression
